@@ -39,6 +39,7 @@ Close foundation gaps. Going slow and thorough, no phases skipped. Build goal: a
 ## Progress log
 | Date | Lesson | Quiz | Note |
 |------|--------|------|------|
+| 2026-10-14 | 00/01-dev-environment | 1/3 | Env fully built (uv venv, torch with MPS, Rust, Julia). Missed install order (bottom-up) and the GPU check: assumed plain macOS torch is CPU-only, but it has MPS; cuda False is expected on a Mac. |
 
 ## Review queue
-<empty for now; learn adds lessons the quiz flags>
+- 00/01-dev-environment (1/3): four-layer stack install order (system, package managers, runtimes, libraries) and GPU verification (`torch.cuda.is_available()` for NVIDIA, `torch.backends.mps.is_available()` on Apple Silicon).
