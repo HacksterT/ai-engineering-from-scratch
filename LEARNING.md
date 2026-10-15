@@ -4,6 +4,7 @@
 
 ## Mission
 Close foundation gaps. Going slow and thorough, no phases skipped. Build goal: a trained model.
+Tutor note: already builds agents that call hosted-LLM APIs with keys. On API, key and SDK topics, review the key points only and skip live API examples and setup. Warm-ups next session should still draw from the Review queue (Phase 0 lessons 1 to 4).
 
 ## Placement
 - Date: 2026-10-14
