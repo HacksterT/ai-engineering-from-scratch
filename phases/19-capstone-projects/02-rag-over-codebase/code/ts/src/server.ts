@@ -8,7 +8,7 @@ export const QueryBody = z.object({
   q: z
     .string()
     .refine((s) => s.trim().length > 0, {
-      message: "query must not be empty or whitespace",
+      error: "query must not be empty or whitespace",
     }),
   topK: z.number().int().positive().max(50).optional(),
 });
