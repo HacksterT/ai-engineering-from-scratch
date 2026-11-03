@@ -24,7 +24,7 @@ Write the returned fields and the expected side-effect count before coding. Keep
 
 Implement `createTicketWorkflow, planHash, persistentWorkflow in optional-mastra/adapter.ts` in your learner workspace. Preserve the exported names and continue using earlier stages rather than duplicating their policies.
 
-The default factory uses InMemoryStore for lightweight tests. persistentWorkflow requires an explicit file: URL and @mastra/libsql 1.23.3 alongside @mastra/core 1.71.0 and Zod 4.3.6. The CLI writes approval.json with approved=false. Inspect the stored plan, explicitly edit approval and run the separate resume command. A false decision remains suspended.
+The default factory uses InMemoryStore for lightweight tests. persistentWorkflow requires an explicit file: URL and @mastra/libsql 1.23.3 alongside @mastra/core 1.71.0 and Zod 4.6.6. The CLI writes approval.json with approved=false. Inspect the stored plan, explicitly edit approval and run the separate resume command. A false decision remains suspended.
 
 ## Hints
 
