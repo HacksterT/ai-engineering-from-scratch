@@ -73,7 +73,7 @@ Restart with the same directory to recover history. Use a new id or `--revision 
 
 ## Optional standard MCP client verification
 
-The optional track uses `mcp==2.1.1`, the installed official Python client, against this project's actual loopback HTTP server. It negotiates the declared 2025-11-25 legacy tools contract. This does not establish support for every newer protocol feature.
+The optional track uses `mcp==2.2.0`, the installed official Python client, against this project's actual loopback HTTP server. It negotiates the declared 2025-11-25 legacy tools contract. This does not establish support for every newer protocol feature.
 
 ```bash
 python3 -m venv .venv-mcp

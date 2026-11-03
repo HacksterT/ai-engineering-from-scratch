@@ -25,7 +25,7 @@ The scratch runtime can replay a saved plan but cannot recover an interrupted si
 Install the pinned optional dependencies at your chosen workspace root. From the repository root:
 
 ```bash
-npm install --prefix projects/typed-workflow-agent-with-mastra/solution --ignore-scripts --package-lock=false --save-exact @mastra/core@1.71.0 zod@4.3.6 @mastra/libsql@1.23.3
+npm install --prefix projects/typed-workflow-agent-with-mastra/solution --ignore-scripts --package-lock=false --save-exact @mastra/core@1.71.0 zod@4.6.6 @mastra/libsql@1.23.3
 python3 scripts/project_test.py typed-workflow-agent-with-mastra --all --solution --optional --strict
 ```
 
