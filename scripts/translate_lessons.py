@@ -171,11 +171,26 @@ SENT_SPLIT = re.compile(r"(?<=[.!?])\s+")
 
 def _nllb_pipe(tgt):
     if tgt not in _NLLB:
-        from transformers import pipeline  # noqa
-        model = os.environ.get("NLLB_MODEL", "facebook/nllb-200-distilled-600M")
-        _NLLB[tgt] = pipeline(
-            "translation", model=model, src_lang="eng_Latn", tgt_lang=tgt, max_length=512,
-        )
+        # Transformers 5 removed TranslationPipeline. NLLB is still seq2seq:
+        # https://github.com/huggingface/transformers/blob/v5.10.1/docs/source/en/model_doc/nllb.md
+        import torch  # noqa
+        from transformers import AutoModelForSeq2SeqLM, AutoTokenizer  # noqa
+
+        model_name = os.environ.get("NLLB_MODEL", "facebook/nllb-200-distilled-600M")
+        tokenizer = AutoTokenizer.from_pretrained(model_name)
+        model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+        model.eval()
+        tokenizer.src_lang = "eng_Latn"
+        bos_id = tokenizer.convert_tokens_to_ids(tgt)
+
+        def translate(text):
+            inputs = tokenizer(text, return_tensors="pt", truncation=True, max_length=512)
+            with torch.inference_mode():
+                output = model.generate(**inputs, forced_bos_token_id=bos_id, max_length=512)
+            decoded = tokenizer.batch_decode(output, skip_special_tokens=True)[0]
+            return [{"translation_text": decoded}]
+
+        _NLLB[tgt] = translate
     return _NLLB[tgt]
 
 
